@@ -1,5 +1,11 @@
+import Header from "./components/header/header";
+
 function Home() {
-  return <h1>Welcome to Tower Hill!</h1>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 }
 
 export default Home;
