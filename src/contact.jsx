@@ -1,8 +1,8 @@
 import Header from "./components/header/header";
-import Body from "./components/body/homebody";
+import Body from "./components/body/contactBody";
 import Footer from "./components/footer/footer";
 
-const Home = (props) => {
+const Contact = (props) => {
   return (
     <div>
       <Header
@@ -15,4 +15,4 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+export default Contact;
