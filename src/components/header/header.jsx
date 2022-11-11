@@ -1,7 +1,10 @@
+import routerConfig from "../../router/router.config";
+
 const Header = (props) => {
   const onNavClick = (page) => (e) => {
     props.setActivePage(page);
   };
+
   return (
     <div className="flex flex flex-row bg-cyan-50">
       <div
@@ -23,30 +26,34 @@ const Header = (props) => {
         </div>
 
         <div className="flex text-base flex items-center gap-2">
-          <span
+          <button
             className={`p-2 text-center text-black hover:shadow-xl text-xl  rounded-md ${
-              props.activePage === "home" ? "underline" : ""
+              props.activePage === routerConfig.navPath.home ? "underline" : ""
             }`}
-            onClick={onNavClick("home")}
+            onClick={onNavClick(routerConfig.navPath.home)}
           >
             Home
-          </span>
-          <span
+          </button>
+          <button
             className={`p-2 text-center text-black hover:shadow-xl text-xl  rounded-md ${
-              props.activePage === "contact" ? "underline" : ""
+              props.activePage === routerConfig.navPath.contact
+                ? "underline"
+                : ""
             }`}
-            onClick={onNavClick("contact")}
+            onClick={onNavClick(routerConfig.navPath.contact)}
           >
             Contact Us
-          </span>
-          <span
+          </button>
+          <button
             className={`p-2 text-center text-black hover:shadow-xl text-xl  rounded-md ${
-              props.activePage === "reservation" ? "underline" : ""
+              props.activePage === routerConfig.navPath.reservation
+                ? "underline"
+                : ""
             }`}
-            onClick={onNavClick("reservation")}
+            onClick={onNavClick(routerConfig.navPath.reservation)}
           >
             Reservation
-          </span>
+          </button>
         </div>
       </div>
     </div>

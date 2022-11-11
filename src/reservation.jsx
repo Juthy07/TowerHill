@@ -9,7 +9,11 @@ const Reservation = (props) => {
         setActivePage={props.setActivePage}
         activePage={props.activePage}
       />
-      <Body />
+      <Body
+        setActivePage={props.setActivePage}
+        activePage={props.activePage}
+        setSearchParams={props.setSearchParams}
+      />
       <Footer />
     </div>
   );
