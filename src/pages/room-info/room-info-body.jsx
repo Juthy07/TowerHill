@@ -1,3 +1,5 @@
+import useRouter from "../../hook/use-router";
+
 const roomSchema = {
   cottage: {
     title: "Luxury Cottage",
@@ -28,28 +30,19 @@ const roomSchema = {
   },
 };
 
-const Body = (props) => {
-  const room = roomSchema[props.searchParams.type];
-  console.log(room);
+const Body = () => {
+  const { searchParams } = useRouter();
+
+  if (!searchParams.type) return null;
+
+  const room = roomSchema[searchParams.type];
+  const requirements = searchParams.requirements;
+  console.log(requirements);
+
   return (
     <div className="pb-20 bg-cyan-400 h-full text-white font-serif pt-5">
-      <h1>
-        {(function () {
-          switch (props.searchParams.type) {
-            case "dormitory":
-              return "Dormitory";
-            case "cottage":
-              return "Cottage";
-            case "tents":
-              return "Tents";
-            default:
-              break;
-          }
-        })()}
-      </h1>
-
       <div className="flex flex-row mx-8 mt-8 justify-between">
-        <div classname="flex flex-row">
+        <div className="flex flex-col">
           <div className="text-3xl p-4">{room.title}</div>
           <img className="w-5/6 h-32" src={room.image} alt="" />
           <div className="">{room.description}</div>
@@ -57,11 +50,41 @@ const Body = (props) => {
         <div className="border-2 p-6 w-auto">
           <div className="mb-4">From {room.price.from} per Night</div>
           <div className="flex justify-center flex-col">
-            <div className="border-2 mb-2 p-2">Check-in</div>
-            <div className="border-2 mb-2 p-2">Check-out</div>
-            <div className="border-2 mb-2 p-2">Adults</div>
-            <div className="border-2 mb-4 p-2">Children</div>
-            <button className="border-2 p-2 mb-2">Book Now!</button>
+            <div className="border-2 mb-2 p-2">
+              Check-in
+              <input
+                type="date"
+                className="text-black m-2"
+                defaultValue={requirements.checkinDate}
+              />
+            </div>
+            <div className="border-2 mb-2 p-2">
+              Check-out
+              <input
+                type="date"
+                className="text-black m-2"
+                defaultValue={requirements.checkoutDate}
+              />
+            </div>
+            <div className="border-2 mb-2 p-2">
+              Adults
+              <input
+                type="number"
+                className="text-black m-2"
+                defaultValue={requirements.adultCount}
+              />
+            </div>
+            <div className="border-2 mb-4 p-2">
+              Children
+              <input
+                type="number"
+                className="text-black m-2"
+                defaultValue={requirements.childCount}
+              />
+            </div>
+            <button className="border-2 p-2 mb-2 bg-white text-cyan-500">
+              Book Now!
+            </button>
           </div>
         </div>
       </div>

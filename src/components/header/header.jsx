@@ -1,9 +1,11 @@
+import useRouter from "../../hook/use-router";
 import routerConfig from "../../router/router.config";
 
 const Header = (props) => {
   const onNavClick = (page) => (e) => {
-    props.setActivePage(page);
+    navigate(page);
   };
+  const { activePage, navigate } = useRouter();
 
   return (
     <div className="flex flex flex-row bg-cyan-50">
@@ -28,7 +30,7 @@ const Header = (props) => {
         <div className="flex text-base flex items-center gap-2">
           <button
             className={`p-2 text-center text-black hover:shadow-xl text-xl  rounded-md ${
-              props.activePage === routerConfig.navPath.home ? "underline" : ""
+              activePage === routerConfig.navPath.home ? "underline" : ""
             }`}
             onClick={onNavClick(routerConfig.navPath.home)}
           >
@@ -36,9 +38,7 @@ const Header = (props) => {
           </button>
           <button
             className={`p-2 text-center text-black hover:shadow-xl text-xl  rounded-md ${
-              props.activePage === routerConfig.navPath.contact
-                ? "underline"
-                : ""
+              activePage === routerConfig.navPath.contact ? "underline" : ""
             }`}
             onClick={onNavClick(routerConfig.navPath.contact)}
           >
@@ -46,9 +46,7 @@ const Header = (props) => {
           </button>
           <button
             className={`p-2 text-center text-black hover:shadow-xl text-xl  rounded-md ${
-              props.activePage === routerConfig.navPath.reservation
-                ? "underline"
-                : ""
+              activePage === routerConfig.navPath.reservation ? "underline" : ""
             }`}
             onClick={onNavClick(routerConfig.navPath.reservation)}
           >
