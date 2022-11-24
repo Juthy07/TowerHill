@@ -3,6 +3,9 @@ const navPath = {
   contact: "contact",
   reservation: "reservation",
   moreInfo: "moreInfo",
+  roomBooking: "roomBooking",
+  payment: "payment",
+  thankyou: "thankyou",
 };
 
 const routerConfig = {

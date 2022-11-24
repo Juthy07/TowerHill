@@ -53,7 +53,7 @@ const RBody = () => {
             return true;
           }
           default:
-            return;
+            return true;
         }
       });
       // if (validated) alert("Form passed the validation check");
@@ -76,7 +76,7 @@ const RBody = () => {
   const onMoreInfoClick = (search) => (e) => {
     navigate(routerConfig.navPath.moreInfo, {
       type: search,
-      requirements: form.current,
+      requirements: JSON.stringify(form.current),
     });
   };
 
@@ -85,36 +85,40 @@ const RBody = () => {
       <div className="flex justify-center flex-col items-center">
         <div className="text-3xl">Book Rooms</div>
         <div className="flex flex-row mt-10">
-          <div className=" border-2 p-2 ">
+          <div className=" border p-2 ">
             Check-in
             <input
               type="date"
               className="ml-2 text-black"
               onChange={onInputChange("checkinDate")}
+              required
             />
           </div>
-          <div className=" border-2 p-2">
+          <div className=" border p-2">
             Check-out{" "}
             <input
               type="date"
               className="ml-2 text-black"
               onChange={onInputChange("checkoutDate")}
+              required
             />
           </div>
-          <div className=" border-2 p-2">
+          <div className=" border p-2">
             Adults{" "}
             <input
               className="ml-2 text-black"
               type="number"
               onChange={onInputChange("adultCount")}
+              required
             />
           </div>
-          <div className=" border-2 p-2">
+          <div className=" border p-2">
             Children{" "}
             <input
               className="ml-2 text-black"
               type="number"
               onChange={onInputChange("childCount")}
+              required
             />
           </div>
           <button className=" border-4 p-2" onClick={onSearch}>
@@ -126,13 +130,13 @@ const RBody = () => {
             return (
               <div className="flex flex-row max-h-72 mt-8 m-8  text-black">
                 <img
-                  className="border-2 border-white bg-white mr-2"
+                  className="border border-white bg-white mr-2"
                   src={room.image}
                   alt=""
                 />
                 <div
                   key={room.type}
-                  className="mr-2 p-2 border-2 border-white bg-white max-w-2xl"
+                  className="mr-2 p-2 border border-white bg-white max-w-2xl"
                 >
                   <div className="text-xl font-bold">{room.title}</div>
                   <div>
@@ -150,10 +154,10 @@ const RBody = () => {
                     </ul>
                   </div>
                 </div>
-                <div className="p-2 border-2 border-white bg-white max-w-lg flex flex-col justify-center">
+                <div className="p-2 border border-white bg-white max-w-lg flex flex-col justify-center">
                   <div>Price: {room.price}</div>
                   <button
-                    className="border-2 p-2 mt-2"
+                    className="border p-2 mt-2"
                     onClick={onMoreInfoClick(room.type)}
                   >
                     More Info

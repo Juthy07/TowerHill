@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$id": "https://example.com/employee.schema.json",
+
+  "title": "Room",
+  "description": "This document records the details of all rooms available",
+  "type": "object",
+  {
+
+      "Room" {
+    
+          "properties": {
+            "r_id": {
+              "description": "A unique identifier for rooms",
+              "type": "number"
+            },
+            "r_type": {
+              "description": "Type of room",
+              "type": "string"
+            },
+            "r_no": {
+              "description": "Room number",
+              "type": "number"
+            },
+            "r_capacity": {
+              "description": "Capacity of each room",
+              "type": "number"
+            },
+            "r_price": {
+              "description": "Price of each room type",
+              "type": "number"
+            }
+          }
+      }
+  }
+}

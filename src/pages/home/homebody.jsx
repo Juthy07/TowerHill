@@ -26,15 +26,19 @@ const Body = () => {
         <h4 className="text-base mt-2">Relax On The Top Of Wayanadan Hills</h4>
         <div className="flex flex-row w-full my-8 h-96">
           <div className="flex-1 border-2 mx-2 flex justify-center items-center flex-col">
-            Luxuary Cottage
+            <img className="w-102 h-80 m-2" src="images/cottage3.jpg" alt="" />
             <div className="text-xs italic">500 square feet Luxury Cottage</div>
           </div>
           <div className="flex-1 border-2 mx-2 flex justify-center items-center flex-col">
-            Dormitory
+            <img
+              className="w-102 h-80 m-2"
+              src="images/dormitory2.jpg"
+              alt=""
+            />
             <div className="text-xs italic">10 Bedspace Dormitory area</div>
           </div>
           <div className="flex-1 border-2 mx-2 flex justify-center items-center flex-col">
-            Tent
+            <img className="w-102 h-80 m-2" src="images/tents2.jpg" alt="" />
             <div className="text-xs italic">Facility of open air tent</div>
           </div>
         </div>
@@ -77,14 +81,16 @@ const Body = () => {
           </div>
         </div>
       </div>
-      <div className=" w-full flex justify-center flex-col backdrop-opacity-30 backdrop-invert  ">
+      {/* <div className=" w-full flex justify-center flex-col backdrop-opacity-30 backdrop-invert  ">
         <div className="mt-12 text-white text-xl">
           Know More about TowerHill!
         </div>
-        <button className="mt-4 text-white border-white border-2 p-2">
-          Contact Us!
-        </button>
-      </div>
+        <div className="w-42">
+          <button className="mt-4 text-white border-white border-2 p-2">
+            Contact Us!
+          </button>
+        </div>
+      </div> */}
     </div>
   );
 };

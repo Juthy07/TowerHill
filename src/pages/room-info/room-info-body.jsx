@@ -1,9 +1,10 @@
 import useRouter from "../../hook/use-router";
+import routerConfig from "../../router/router.config";
 
 const roomSchema = {
   cottage: {
     title: "Luxury Cottage",
-    image: "images/roomcottage.jpg",
+    image: "images/cottage3.jpg",
     description:
       "Towerhill Villa cottages are well furnished and fully air conditioned. These rooms have a private balcony and an open terrace filled with exotic Wayanad views. The spacious luxury villa, which is 500 square feet in area contains an A/C bedroom, distinct dining hall, dressing room, balcony which gives you an exotic view of scenic beauty and a bathroom with glass partition with round clock supply of hot water which are specially designed for your luxurious stay at Towehill . Cottage also offer Complementary breakfast, safe locker, LCD TV, Hair dryer, Laundry facility, Room service.",
     price: {
@@ -30,21 +31,25 @@ const roomSchema = {
   },
 };
 
-const Body = () => {
+const Body = (props) => {
+  const onBookNowClick = (page) => (e) => {
+    navigate(page);
+  };
+  const { navigate } = useRouter();
   const { searchParams } = useRouter();
 
   if (!searchParams.type) return null;
 
   const room = roomSchema[searchParams.type];
-  const requirements = searchParams.requirements;
+  const requirements = JSON.parse(searchParams.requirements);
   console.log(requirements);
 
   return (
     <div className="pb-20 bg-cyan-400 h-full text-white font-serif pt-5">
       <div className="flex flex-row mx-8 mt-8 justify-between">
-        <div className="flex flex-col">
+        <div className="flex flex-col p-6 gap-4 ">
           <div className="text-3xl p-4">{room.title}</div>
-          <img className="w-5/6 h-32" src={room.image} alt="" />
+          <img className="w-full object-contain h-80" src={room.image} alt="" />
           <div className="">{room.description}</div>
         </div>
         <div className="border-2 p-6 w-auto">
@@ -82,7 +87,10 @@ const Body = () => {
                 defaultValue={requirements.childCount}
               />
             </div>
-            <button className="border-2 p-2 mb-2 bg-white text-cyan-500">
+            <button
+              className="border-2 p-2 mb-2 bg-white text-cyan-500"
+              onClick={onBookNowClick(routerConfig.navPath.roomBooking)}
+            >
               Book Now!
             </button>
           </div>
